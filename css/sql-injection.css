@@ -1,0 +1,37 @@
+:root{
+  --page-accent:var(--bx-sky);
+}
+
+.inject{
+  background:#fde8e6;color:#9c241b;border:2px solid var(--bx-red);
+  border-radius:6px;padding:1px 6px;font-family:Consolas,Menlo,monospace;
+  font-weight:bold;font-size:13px;
+}
+
+.mode-pill{
+  display:inline-block;padding:3px 11px;border-radius:999px;border:2px solid #000;
+  font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.3px;
+}
+.mode-danger{background:#fde8e6;color:#9c241b}
+.mode-safe{background:#e8f7ee;color:#0f6b3a}
+
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.vs .side{
+  border:3px solid var(--bx-ink);border-radius:12px;padding:14px;background:#fff;
+  box-shadow:0 4px 0 rgba(0,0,0,.12);
+}
+.vs .side h4{margin:0 0 8px;font-size:16px;display:flex;align-items:center;gap:7px}
+.vs .side.bad-side{background:#fef4f3;border-color:var(--bx-red)}
+.vs .side.ok-side{background:#f2fbf6;border-color:var(--bx-green)}
+.vs .side p{margin:0;font-size:14px;color:#48525d}
+
+.mode-select{
+  width:100%;padding:11px 12px;border:2px solid var(--bx-ink);border-radius:10px;
+  font-family:inherit;font-size:14px;background:#fff;font-weight:bold;
+}
+
+#sqlScore{font-weight:900;font-size:18px;margin-top:8px}
+
+@media(max-width:720px){
+  .vs{grid-template-columns:1fr}
+}

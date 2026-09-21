@@ -1,0 +1,59 @@
+/* ============================================================
+   Akademi Keamanan Siber Bloxy - port-scanning.css
+
+   DIPAKAI OLEH: port-scanning.html SAJA.
+
+   Halaman ini juga memuat base.css (kerangka umum) dan
+   lab.css (terminal, tabel, daftar temuan).
+   File ini hanya berisi ciri khas halaman Port Scanning:
+   label status pintu, ilustrasi pintu, dan mini-game tembok api.
+   ============================================================ */
+
+/* ---------- 1. Warna khas halaman ini: HIJAU ---------- */
+:root{
+  --page-accent:var(--bx-green);
+}
+
+/* ---------- 2. Label status pintu (port) ---------- */
+.st{
+  display:inline-block;padding:3px 11px;border-radius:999px;border:2px solid #000;
+  font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.3px;
+}
+.st-open{background:#fde8e6;color:#9c241b}    /* terbuka   */
+.st-close{background:#e8f7ee;color:#0f6b3a}   /* tertutup  */
+.st-filter{background:#e5f2fc;color:#0a4d80}  /* tersaring */
+
+/* Keterangan versi layanan di tabel (mis. "nginx 1.18.0") */
+.dim2{color:#7d8894;font-weight:normal;font-size:12px;margin-left:6px}
+
+/* ---------- 3. Ilustrasi "gedung berpintu" ---------- */
+.doors{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
+.door{
+  border:3px solid var(--bx-ink);border-radius:10px;padding:10px 6px;text-align:center;
+  font-size:12px;font-weight:bold;box-shadow:0 4px 0 rgba(0,0,0,.15);background:#fff;
+}
+.door .no{display:block;font-size:17px;font-weight:900;margin-bottom:2px}
+.door.open{background:#fde8e6;border-color:var(--bx-red)}
+.door.shut{background:#e8f7ee;border-color:var(--bx-green)}
+
+/* ---------- 4. Mini-game "Jadi Tembok Api" ---------- */
+#fwList{display:grid;gap:10px;margin-top:12px}
+.fw-item{
+  display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;
+  background:#fff;border:2px solid var(--bx-line);border-radius:12px;padding:11px 13px;
+}
+.fw-item .fw-info b{font-size:15px}
+.fw-item .fw-note{grid-column:1 / -1;font-size:13px;color:#48525d;line-height:1.45}
+.fw-item .fw-note:empty{display:none}
+.fw-ok{border-color:var(--bx-green);background:#f2fbf6}   /* jawaban benar */
+.fw-no{border-color:var(--bx-red);background:#fef4f3}     /* jawaban salah */
+#fwScore{font-weight:900;font-size:17px;margin-top:12px}
+
+/* ---------- 5. Skor kuis halaman Port Scanning ---------- */
+#portScore{font-weight:900;font-size:18px;margin-top:8px}
+
+/* ---------- 6. Tampilan HP ---------- */
+@media(max-width:720px){
+  .doors{grid-template-columns:repeat(3,1fr)}
+  .fw-item{grid-template-columns:1fr}
+}

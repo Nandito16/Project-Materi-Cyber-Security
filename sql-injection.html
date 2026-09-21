@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SQL Injection — Akademi Keamanan Siber Bloxy</title>
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/lab.css" />
+<link rel="stylesheet" href="css/sql-injection.css" />
+<script src="js/sqlinjection.js" defer></script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <div class="logo"><span class="cube"><span>🔑</span></span> SQL Injection</div>
+    <nav class="menu">
+      <a href="#aturan">Aturan Main</a>
+      <a href="#apa">Apa Itu?</a>
+      <a href="#simulasi">Simulasi</a>
+      <a href="#lindungi">Cara Melindungi</a>
+      <a href="index.html">← Beranda</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero wrap">
+  <h1>Jaga <span class="hl">Pintu Login</span> dari Kata Ajaib!</h1>
+  <p class="sub">SQL Injection adalah trik menulis “kata ajaib” di kotak login untuk menipu <b>database</b> supaya membuka pintu tanpa sandi yang benar. Di sini kamu belajar cara kerjanya — dan cara developer <b>menutup celahnya</b>.</p>
+</div>
+
+<div class="wrap">
+
+<section id="aturan">
+  <div class="sec-title aturanmain"><div class="num" style="background:var(--bx-orange)">!</div><h2>Aturan Main — Baca Dulu!</h2></div>
+  <div class="rule-box">
+    <h3>⚠️ Mencoba “kata ajaib” di website orang lain tanpa izin itu <span class="dilarang">DILARANG</span></h3>
+    <ol>
+      <li><b>Selalu minta izin dulu.</b> Mencoba menembus login milik orang lain bisa melanggar hukum — sama seperti mencoba-coba membuka gembok rumah tetangga.</li>
+      <li><b>Hanya berlatih di kotak login milikmu sendiri</b> — atau di halaman latihan khusus seperti ini yang memang dibuat untuk belajar.</li>
+      <li><b>Jangan pernah mencoba trik ini di website sungguhan</b>, sekolah, game, atau toko online. Itu bukan lelucon.</li>
+      <li><b>Kalau kamu menemukan celah, laporkan.</b> Beri tahu pemilik website atau orang dewasa. Jangan diutak-atik, jangan disebar.</li>
+      <li><b>Ilmu ini untuk menutup celah, bukan membobol.</b> Developer yang baik memakainya untuk memperkuat pintunya sendiri.</li>
+    </ol>
+  </div>
+</section>
+
+<section id="apa">
+  <div class="sec-title"><div class="num" style="background:var(--bx-sky)">?</div><h2>Apa Itu SQL Injection?</h2></div>
+  <div class="grid">
+    <div class="card block">
+      <div class="studs"><span class="stud"></span><span class="stud"></span><span class="stud"></span></div>
+      <h3>🗄️ Database itu apa?</h3>
+      <p class="desc">Website menyimpan data pemain (nama &amp; sandi) di sebuah <b>gudang data</b> bernama <i>database</i>. Saat kamu login, website bertanya ke gudang: “Apakah ada pemain bernama <b>X</b> dengan sandi <b>Y</b>?”</p>
+      <p class="desc">Pertanyaan itu ditulis dalam bahasa khusus bernama <b>SQL</b>. Contohnya kira-kira begini:</p>
+      <table class="tbl">
+        <tr><th>Perintah SQL saat kamu login</th></tr>
+        <tr><td><code>SELECT * FROM pemain WHERE nama='budi' AND sandi='rahasia'</code></td></tr>
+      </table>
+      <div class="safe-tip"><b>Idenya:</b> perintah ini seharusnya hanya cocok kalau nama <i>dan</i> sandi benar.</div>
+    </div>
+    <div class="card block">
+      <div class="studs"><span class="stud"></span><span class="stud"></span><span class="stud"></span></div>
+      <h3>🎭 Kata ajaib yang menipu</h3>
+      <p class="desc">Masalah muncul kalau website <b>menempel</b> ketikanmu apa adanya ke dalam perintah. Penjahat menulis nama yang mengandung tanda kutip dan syarat palsu:</p>
+      <table class="tbl">
+        <tr><th>Yang diketik penjahat di kolom nama</th></tr>
+        <tr><td><span class="inject">admin' OR '1'='1</span></td></tr>
+      </table>
+      <p class="desc" style="margin-top:12px">Tanda kutip <code>'</code> menutup nama lebih awal, lalu <code>OR '1'='1'</code> menambah syarat yang <b>selalu benar</b>. Akibatnya database mengira semua pemain cocok, dan pintu terbuka <b>tanpa sandi</b>.</p>
+      <div class="safe-tip"><b>Analogi:</b> seperti menulis di kartu tamu “Nama saya Budi — <i>ATAU siapa saja boleh masuk</i>”, dan penjaga menurutinya bulat-bulat.</div>
+    </div>
+  </div>
+</section>
+
+<section id="simulasi">
+  <div class="sec-title"><div class="num" style="background:var(--bx-sky);color:#fff">1</div><h2>Simulasi: Pintu Login Bloxy</h2></div>
+
+  <div class="grid">
+    <div class="card block">
+      <div class="studs"><span class="stud"></span><span class="stud"></span><span class="stud"></span></div>
+      <h3>🔑 Kotak Login</h3>
+      <p class="desc">Login biasa akan gagal (akun palsu). Lalu klik “Beri Petunjuk” untuk mencoba kata ajaib — dan bandingkan mode <span class="mode-pill mode-danger">rentan</span> vs <span class="mode-pill mode-safe">aman</span>.</p>
+      <div class="demo">
+        <label for="sqliMode">Jenis website</label>
+        <select id="sqliMode" class="mode-select">
+          <option value="rentan">Website Tidak Aman (menempel ketikan ke perintah)</option>
+          <option value="aman">Website Aman (parameterized query)</option>
+        </select>
+        <label for="sqliUser" style="margin-top:8px">Nama pemain</label>
+        <input id="sqliUser" placeholder="ketik nama..." />
+        <label for="sqliPass" style="margin-top:8px">Kata sandi</label>
+        <input id="sqliPass" placeholder="ketik sandi..." />
+        <div class="row">
+          <button class="btn play" onclick="sqliLogin()">Masuk</button>
+          <button class="btn hint small" onclick="sqliHint()">Beri Petunjuk</button>
+          <button class="btn hint small" style="background:var(--bx-slate)" onclick="sqliReset()">Ulangi</button>
+        </div>
+        <div class="out" id="sqliOut"></div>
+      </div>
+    </div>
+
+    <div class="card block">
+      <div class="studs"><span class="stud"></span><span class="stud"></span><span class="stud"></span></div>
+      <h3>🖥️ Di Balik Layar</h3>
+      <p class="desc">Inilah perintah yang dirangkai website dari ketikanmu. Perhatikan bedanya antara kedua mode.</p>
+      <div class="terminal">
+        <div class="bar-top">
+          <span class="dot" style="background:#ff5f57"></span>
+          <span class="dot" style="background:#ffbd2e"></span>
+          <span class="dot" style="background:#28c840"></span>
+          <span class="ttl">database-latihan — sql</span>
+        </div>
+        <pre id="sqliTerm"><span class="dim">Klik “Masuk” untuk melihat perintah yang dibuat website...</span></pre>
+      </div>
+      <div class="vs">
+        <div class="side bad-side">
+          <h4>❌ Cara berbahaya</h4>
+          <p>Ketikan ditempel langsung ke perintah, jadi tanda kutip bisa mematahkannya.</p>
+        </div>
+        <div class="side ok-side">
+          <h4>✅ Cara aman</h4>
+          <p>Perintah &amp; data dikirim <b>terpisah</b> (tanda <code>?</code>), jadi ketikan selalu dianggap teks biasa.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="lindungi">
+  <div class="sec-title"><div class="num" style="background:var(--bx-green)">✓</div><h2>Cara Melindungi Pintu Login</h2></div>
+  <table class="tbl">
+    <tr><th style="width:34%">Cara</th><th>Penjelasan</th></tr>
+    <tr>
+      <td><b>Parameterized query</b><br>(pertahanan utama)</td>
+      <td>Kirim perintah dan data secara <b>terpisah</b> (pakai tanda <code>?</code>). Ketikan pengguna tidak akan pernah dianggap sebagai perintah. Ini menutup hampir semua SQL Injection.</td>
+    </tr>
+    <tr>
+      <td><b>Periksa masukan</b><br>(validasi)</td>
+      <td>Tolak karakter aneh di tempat yang seharusnya tidak ada, dan pastikan bentuk data sesuai (misalnya umur harus angka).</td>
+    </tr>
+    <tr>
+      <td><b>Beri hak seperlunya</b></td>
+      <td>Akun database untuk website cukup diberi izin yang perlu saja, supaya kalaupun bocor, kerusakannya terbatas.</td>
+    </tr>
+    <tr>
+      <td><b>Simpan sandi teracak</b><br>(hashing)</td>
+      <td>Sandi jangan disimpan apa adanya, tapi diacak dulu. Kalau gudang data bocor, sandinya tetap sulit dibaca.</td>
+    </tr>
+    <tr>
+      <td><b>Sembunyikan pesan error</b></td>
+      <td>Jangan tampilkan pesan error database ke pengunjung — itu bisa membocorkan bentuk perintahnya (ingat materi Kebocoran Informasi).</td>
+    </tr>
+  </table>
+</section>
+
+<section id="kuis-sql">
+  <div class="sec-title kuis"><div class="num" style="background:var(--bx-green);color:var(--bx-yellow)">★</div><h2>Kuis Penjaga Pintu Login</h2></div>
+  <p class="sec-sub">Uji pemahamanmu tentang SQL Injection.</p>
+  <div class="quiz block" id="sqlQuizBox"></div>
+  <p style="margin-top:22px"><a class="cta" href="index.html">← Kembali ke Beranda &amp; lanjut materi berikutnya</a></p>
+</section>
+
+</div>
+
+<footer>
+  <p><b>Akademi Keamanan Siber Bloxy</b> — media belajar untuk anak-anak.</p>
+  <p>Semua login, database, dan target <code>.latihan</code> di halaman ini fiktif. Tidak ada database sungguhan yang dijalankan, tidak ada perintah SQL yang benar-benar dikirim, dan tidak ada koneksi jaringan yang dibuat. Semua “perintah” hanya teks untuk diperlihatkan.</p>
+  <p>Website ini tidak berafiliasi dengan Roblox Corporation. Ingat aturan emas: <b>hanya berlatih di sistem milikmu sendiri atau yang sudah memberi izin</b> — jadilah penjaga, bukan penjahat! 🛡️</p>
+</footer>
+
+</body>
+</html>

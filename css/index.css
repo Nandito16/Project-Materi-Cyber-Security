@@ -1,0 +1,44 @@
+/* ============================================================
+   Akademi Keamanan Siber Bloxy - index.css
+
+   DIPAKAI OLEH: index.html (beranda) SAJA.
+
+   Isinya hal-hal yang hanya ada di beranda: barisan avatar,
+   kartu unggulan materi, dan skor kuis beranda.
+   Mengubah file ini TIDAK akan memengaruhi halaman lain.
+   ============================================================ */
+
+/* ---------- 1. Warna khas halaman ini: MERAH ---------- */
+:root{
+  --page-accent:var(--bx-red);
+}
+
+/* ---------- 2. Barisan avatar di hero ---------- */
+.avatars{display:flex;justify-content:center;gap:18px;margin:26px 0 6px;flex-wrap:wrap}
+.noob{width:74px;text-align:center;font-size:11px;font-weight:bold;color:#3a444f}
+.noob .body{
+  width:64px;height:64px;margin:0 auto 6px;border-radius:12px;border:3px solid #000;
+  display:grid;place-items:center;font-size:30px;box-shadow:0 5px 0 rgba(0,0,0,.2);
+}
+
+/* ---------- 3. Kartu unggulan (materi yang punya halaman sendiri) ---------- */
+.feature{display:grid;grid-template-columns:1.5fr 1fr;gap:26px;align-items:center}
+
+/* Panel hitam berisi contoh tampilan terminal */
+.feature .art{
+  background:linear-gradient(160deg,#1f2937,#111827);
+  border:3px solid #000;border-radius:14px;padding:16px;
+  font-family:Consolas,Menlo,monospace;font-size:12px;color:#8be9a5;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);
+}
+.feature .art .l{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.feature .art .g{color:#7d8894}
+.feature .art .y{color:#ffcf33}
+
+/* ---------- 4. Skor kuis beranda ---------- */
+#quizScore{font-weight:900;font-size:18px;margin-top:8px}
+
+/* ---------- 5. Tampilan HP ---------- */
+@media(max-width:720px){
+  .feature{grid-template-columns:1fr}
+}

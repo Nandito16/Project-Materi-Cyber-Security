@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cyber Hero Academy</title>
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/index.css" />
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <div class="logo"><span class="cube"><span>🧱</span></span> Cyber Hero</div>
+    <nav class="menu">
+      <a href="#scan">Web Scanning</a>
+      <a href="#port">Port Scanning</a>
+      <a href="#sql">SQL Injection</a>
+      <a href="#brute">Brute Force</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero wrap">
+  <div class="badges">
+  </div>
+  <h1>Jadi <span class="hl">Penjaga Digital</span> di Dunia Maya!</h1>
+  <p class="sub">Halo <span class="cyber"><strong>Cyber Hero</strong></span>! Di sini kamu belajar bagaimana penjahat siber mencoba menipu website lho dan yang paling penting, <b>bagaimana cara melindungi diri</b>. Semua contoh di sini hanya simulasi dan tentunya aman. Ayo mulai petualangan!</p>
+  
+</div>
+
+<div class="wrap">
+
+<section id="scan">
+  <div class="sec-title"><div class="num" style="background:var(--bx-green);color:#fff">1</div><h2>Web Scanning</h2></div>
+
+  <div class="card block">
+    <div class="studs"><span class="stud"></span><span class="stud"></span><span class="stud"></span></div>
+    <div class="feature">
+      <div>
+        <h3>🔎 Jadi Detektif Website</h3>
+        <p class="desc">Sebelum tidur kamu mengecek pintu dan jendela rumah, kan? Web Scanning persis seperti itu, tapi untuk website. Pada materi ini kamu akan belajar dua alat detektif sungguhan:</p>
+        <p class="desc">
+          • <b class="apps">WhatWeb</b> = menjawab “website ini terbuat dari apa?”<br>
+          • <b class="apps">Gobuster</b> = menjawab “pintu tersembunyinya ada di mana?”
+        </p>
+        <p class="desc">Lengkap dengan <b>simulasi terminal</b> yang bisa kamu jalankan sendiri, dan cara memperbaiki setiap masalah yang ditemukan.</p>
+        <p style="margin:18px 0 0">
+          <a class="cta" href="web-scanning.html">Buka Halaman Web Scanning →</a>
+        </p>
+      </div>
+      <div class="art">
+        <span class="l"><span class="g">siswa@bloxy:~$</span> whatweb</span>
+        <span class="l"><span class="g">[200]</span> nginx/<span class="y">1.18.0</span></span>
+        <span class="l"><span class="g">[200]</span> PHP/<span class="y">7.4.3</span></span>
+        <span class="l">&nbsp;</span>
+        <span class="l"><span class="g">siswa@bloxy:~$</span> gobuster</span>
+        <span class="l">KETEMU <span class="y">/admin</span> (403)</span>
+        <span class="l">KETEMU <span class="y">/backup</span> (200)</span>
+        <span class="l"><span class="g">mencoba /naga — 404</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="port">
+  <div class="sec-title"><div class="num" style="background:#10af13;color:#fff">2</div><h2>Port Scanning</h2></div>
+  <div class="card block">
+    <div class="studs"><span class="stud"></span><span class="stud"></span><span class="stud"></span></div>
+    <div class="feature">
+      <div>
+        <h3>🚪 Jadi Penjaga Pintu Gerbang</h3>
+        <p class="desc">Satu komputer punya <b>ribuan pintu bernomor</b> yang disebut <i>port</i>. Website memakai pintu <b>443</b>, email pintu <b>25</b>, gudang data pintu <b>3306</b>. Kalau ada pintu lupa dikunci, siapa pun bisa mencoba masuk lewat situ.</p>
+        <p class="desc">Pada materi ini kamu akan belajar:</p>
+        <p class="desc">
+          • <b class="apps">Nmap</b> = alat pengetuk pintu paling terkenal di dunia<br>
+          • Arti <b>terbuka</b>, <b>tertutup</b>, dan <b>tersaring</b><br>
+          • Mini-game <b>“Jadi Tembok Api”</b> kamu yang memutuskan pintu mana ditutup!
+        </p>
+        <p style="margin:18px 0 0">
+          <a class="cta2" href="port-scanning.html">Buka Halaman Port Scanning →</a>
+        </p>
+      </div>
+      <div class="art">
+        <span class="l"><span class="g">siswa@bloxy:~$</span> nmap</span>
+        <span class="l">TERBUKA <span class="y">22/tcp</span> ssh</span>
+        <span class="l">TERBUKA <span class="y">443/tcp</span> https</span>
+        <span class="l">TERBUKA <span class="y">3306/tcp</span> mysql</span>
+        <span class="l"><span class="g">tertutup 23/tcp telnet</span></span>
+        <span class="l"><span class="g">tersaring 21/tcp ftp</span></span>
+        <span class="l">&nbsp;</span>
+        <span class="l"><span class="g">3 pintu terbuka — 1 bahaya!</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sql">
+  <div class="sec-title"><div class="num" style="background:var(--bx-sky);color:#fff">3</div><h2>SQL Injection</h2></div>
+
+  <div class="card block">
+    <div class="studs"><span class="stud"></span><span class="stud"></span><span class="stud"></span></div>
+    <div class="feature">
+      <div>
+        <h3>🔑 Jaga Pintu Login dari Kata Ajaib</h3>
+        <p class="desc">Website menyimpan nama &amp; sandi pemain di sebuah <b>gudang data</b> (database). <b class="apps">SQL Injection</b> adalah trik menulis kalimat khusus agar gudang itu tertipu dan membuka pintu <b>tanpa sandi yang benar</b>.</p>
+        <p class="desc">Di halaman khusus ini kamu akan belajar:</p>
+        <p class="desc">
+          • Bagaimana <b>“kata ajaib”</b> seperti <code>' OR '1'='1</code> bisa membobol login<br>
+          • Melihat sendiri perintah di <b>“balik layar”</b> lewat simulasi terminal<br>
+          • Cara developer menutup celahnya dengan <b class="apps">parameterized query</b>
+        </p>
+        <p style="margin:18px 0 0">
+          <a class="cta3" href="sql-injection.html">Buka Halaman SQL Injection →</a>
+        </p>
+      </div>
+      <div class="art">
+        <span class="l"><span class="g">nama:</span> admin<span class="y">' OR '1'='1</span></span>
+        <span class="l"><span class="g">sandi:</span> apa saja</span>
+        <span class="l">&nbsp;</span>
+        <span class="l"><span class="g">SELECT * FROM pemain</span></span>
+        <span class="l">WHERE nama=<span class="y">''</span> OR <span class="y">'1'='1'</span></span>
+        <span class="l">&nbsp;</span>
+        <span class="l"><span class="g">⚠ pintu terbuka tanpa sandi!</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="brute">
+  <div class="sec-title"><div class="num" style="background:var(--bx-orange);color:#fff">4</div><h2>Brute Force</h2></div>
+  <div class="card block">
+    <div class="studs"><span class="stud"></span><span class="stud"></span><span class="stud"></span></div>
+    <div class="feature">
+      <div>
+        <h3>🔨 Jadi Penjaga Sandi yang Kuat</h3>
+        <p class="desc">Brute force artinya “tenaga kasar”: penjahat <b>mencoba sandi satu per satu</b> — ribuan bahkan jutaan per detik — sampai ada yang cocok. Kalau sandimu pendek atau umum, ia bisa ketemu dalam sekejap.</p>
+        <p class="desc">Di halaman khusus ini kamu akan belajar:</p>
+        <p class="desc">
+          • <b class="apps">Hydra</b> = mesin penebak sandi paling terkenal di dunia<br>
+          • Kenapa sandi seperti <code>123456</code> ketemu seketika<br>
+          • <b>Simulasi</b> yang bisa kamu jalankan: bandingkan akun lemah vs akun kuat yang terkunci
+        </p>
+        <p style="margin:18px 0 0">
+          <a class="cta4" href="brute-force.html">Buka Halaman Brute Force →</a>
+        </p>
+      </div>
+      <div class="art">
+        <span class="l"><span class="g">siswa@bloxy:~$</span> hydra ...</span>
+        <span class="l">[1] mencoba <span class="y">123456</span> — GAGAL</span>
+        <span class="l">[2] mencoba <span class="y">password</span> — GAGAL</span>
+        <span class="l">[3] mencoba <span class="y">qwerty</span> — GAGAL</span>
+        <span class="l"><span class="g">...</span></span>
+        <span class="l">[11] <span class="y">bloxy123</span> ← COCOK!</span>
+        <span class="l">&nbsp;</span>
+        <span class="l"><span class="g">⚠ sandi lemah ketebak!</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <p><b>Cyber Hero by Timedoor Academy</b> — media belajar untuk anak-anak.</p>
+  <p>Website ini tidak berafiliasi dengan Roblox Corporation. Semua contoh adalah simulasi aman untuk edukasi keamanan siber. Ingat aturan emas: <b>jangan pernah membobol sistem milik orang lain</b> — jadilah penjaga, bukan penjahat! 🛡️</p>
+</footer>
+
+</body>
+</html>

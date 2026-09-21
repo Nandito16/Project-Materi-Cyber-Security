@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Port Scanning — Akademi Keamanan Siber Bloxy</title>
+<!-- base.css = kerangka umum | lab.css = komponen simulasi
+     port-scanning.css = gaya khusus halaman ini saja -->
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/lab.css" />
+<link rel="stylesheet" href="css/port-scanning.css" />
+<script src="js/portscan.js" defer></script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <div class="logo"><span class="cube"><span>🚪</span></span> Port Scanning</div>
+    <nav class="menu">
+      <a href="#aturan">Aturan Main</a>
+      <a href="#apa">Apa Itu Port?</a>
+      <a href="#nmap">Nmap</a>
+      <a href="#tembok">Jadi Tembok Api</a>
+      <a href="#lindungi">Cara Melindungi</a>
+      <a href="index.html">← Beranda</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero wrap">
+  <h1>Jadi <span class="hl">Penjaga Pintu</span> Gerbang!</h1>
+  <p class="sub">Setiap komputer punya <b>banyak pintu bernomor</b> yang disebut <i>port</i>. Port Scanning adalah cara mengecek pintu mana yang terbuka. Petugas keamanan memakainya untuk <b>menutup pintu yang lupa dikunci</b> di komputernya sendiri.</p>
+</div>
+
+<div class="wrap">
+
+<section id="aturan">
+  <div class="sec-title aturanmain"><div class="num" style="background:var(--bx-orange)">!</div><h2>Aturan Main — Baca Dulu!</h2></div>
+  <div class="rule-box">
+    <h3>⚠️ Memindai port komputer orang lain tanpa izin itu <span class="dilarang">DILARANG</span></h3>
+    <ol>
+      <li><b>Selalu minta izin dulu.</b> Memindai port komputer atau jaringan orang lain bisa melanggar hukum — sama seperti menggoyang-goyang gagang pintu rumah tetangga satu per satu untuk tahu mana yang tidak dikunci.</li>
+      <li><b>Jangan pindai Wi-Fi sekolah, kantor, atau warnet.</b> Walaupun kamu tersambung ke sana, jaringan itu bukan milikmu.</li>
+      <li><b>Hanya pindai komputermu sendiri</b> — atau target latihan khusus yang memang dibuat untuk belajar.</li>
+      <li><b>Kalau menemukan pintu terbuka yang berbahaya, laporkan.</b> Beri tahu orang dewasa atau pemiliknya. Jangan coba masuk.</li>
+      <li><b>Ilmu ini untuk mengunci pintu, bukan membukanya.</b> Penjaga yang baik melindungi, bukan menyusup.</li>
+    </ol>
+  </div>
+</section>
+
+<section id="apa">
+  <div class="sec-title"><div class="num" style="background:var(--bx-sky)">?</div><h2>Apa Itu Port?</h2></div>
+  <div class="grid">
+    <div class="card block">
+      <div class="studs"><span class="stud"></span><span class="stud"></span><span class="stud"></span></div>
+      <h3>🏢 Bayangkan</h3>
+      <p class="desc">Satu komputer bisa melakukan banyak tugas sekaligus: menyajikan website, mengirim email, menyimpan data. Supaya tidak tertukar, setiap tugas diberi <b>pintu dengan nomor sendiri</b>.</p>
+      <p class="desc">Jadi <b>port</b> = pintu bernomor. Website memakai pintu <b>443</b>, email memakai pintu <b>25</b>, database memakai pintu <b>3306</b>.</p>
+      <p class="desc">Masalahnya: kalau ada pintu yang <b>lupa dikunci</b>, siapa pun bisa mencoba masuk lewat situ.</p>
+      <div class="doors">
+        <div class="door shut"><span class="no">21</span>terkunci</div>
+        <div class="door shut"><span class="no">23</span>terkunci</div>
+        <div class="door open"><span class="no">443</span>terbuka</div>
+        <div class="door open"><span class="no">3306</span>lupa!</div>
+      </div>
+      <div class="safe-tip"><b>Perhatikan:</b> pintu 443 memang <i>harus</i> terbuka supaya orang bisa membuka website. Tapi pintu 3306 (gudang data) seharusnya <b>tidak pernah</b> terbuka ke internet!</div>
+    </div>
+    <div class="card block">
+      <div class="studs"><span class="stud"></span><span class="stud"></span><span class="stud"></span></div>
+      <h3>🔢 Pintu yang Sering Dipakai</h3>
+      <p class="desc">Nomor-nomor ini sudah jadi kesepakatan sedunia, jadi semua komputer paham:</p>
+      <table class="tbl">
+        <tr><th style="width:22%">Pintu</th><th>Tugasnya</th></tr>
+        <tr><td><b>21</b> ftp</td><td>Kirim-terima file (versi lama, tidak terkunci)</td></tr>
+        <tr><td><b>22</b> ssh</td><td>Mengendalikan komputer dari jauh (terkunci)</td></tr>
+        <tr><td><b>23</b> telnet</td><td>Kendali jarak jauh <b>tanpa</b> kunci — sudah tidak boleh dipakai</td></tr>
+        <tr><td><b>25</b> smtp</td><td>Mengirim email</td></tr>
+        <tr><td><b>80</b> http</td><td>Website biasa</td></tr>
+        <tr><td><b>443</b> https</td><td>Website terkunci (aman) 🔒</td></tr>
+        <tr><td><b>3306</b> mysql</td><td>Gudang data (database)</td></tr>
+        <tr><td><b>3389</b> rdp</td><td>Melihat layar komputer dari jauh</td></tr>
+      </table>
+      <div class="safe-tip">Tidak perlu dihafal! Yang penting kamu paham <b>idenya</b>: tiap pintu punya tugas, dan pintu yang tidak dipakai sebaiknya <b>ditutup</b>.</div>
+    </div>
+  </div>
+</section>
+
+<section id="nmap">
+  <div class="sec-title"><div class="num" style="background:#10af13;color:#fff">1</div><h2>Nmap — “Pintu Mana yang Terbuka?”</h2></div>
+
+  <div class="grid">
+    <div class="card block">
+      <div class="studs"><span class="stud"></span><span class="stud"></span><span class="stud"></span></div>
+      <h3>🧠 Cara Kerjanya</h3>
+      <p class="desc">Nmap (singkatan dari <i>Network Mapper</i>) bekerja seperti tukang pos yang mengetuk pintu satu per satu: “Halo, pintu 21, ada orang?”</p>
+      <p class="desc">Lalu ia mencatat jawabannya. Ada tiga kemungkinan:</p>
+      <table class="tbl">
+        <tr><th style="width:34%">Jawaban</th><th>Artinya</th></tr>
+        <tr><td><span class="st st-open">terbuka</span></td><td>Ada yang menjawab! Pintu ini aktif dan bisa dimasuki.</td></tr>
+        <tr><td><span class="st st-close">tertutup</span></td><td>Pintunya ada, tapi tidak ada yang menjawab.</td></tr>
+        <tr><td><span class="st st-filter">tersaring</span></td><td>Ada <b>tembok api</b> (firewall) yang menghalangi, jadi ketukan tidak sampai.</td></tr>
+      </table>
+      <p class="desc" style="margin-top:14px">Nmap juga bisa bertanya lebih dalam dengan perintah <code>-sV</code>, artinya: “bukan cuma <i>siapa</i> di balik pintu, tapi <b>versi berapa</b>?”</p>
+      <div class="safe-tip"><b>Kenapa versi penting?</b> Program versi lama sering punya kelemahan yang sudah diketahui umum. Kalau pemilik tahu versinya ketinggalan, ia bisa segera <b>memperbaruinya</b>. Coba pilih mode <i>“dengan versi”</i> di simulasi sebelah!</div>
+      <div class="safe-tip" style="border-left-color:var(--bx-orange)"><b>Nmap bukan alat jahat.</b> Ia dipakai setiap hari oleh petugas keamanan, admin jaringan, dan guru untuk memeriksa sistem <i>milik mereka sendiri</i>. Yang menentukan baik atau buruk adalah <b>izin</b> dan <b>niat</b>.</div>
+    </div>
+
+    <div class="card block">
+      <div class="studs"><span class="stud"></span><span class="stud"></span><span class="stud"></span></div>
+      <h3>🚪 Simulasi Nmap</h3>
+      <p class="desc">Pilih komputer latihan (semuanya fiktif!), lalu bandingkan: mana yang pintunya banyak lupa dikunci, dan mana yang rapi.</p>
+      <div class="demo">
+        <label for="npTarget">Pilih target latihan</label>
+        <select id="npTarget" style="width:100%;padding:11px 12px;border:2px solid var(--bx-ink);border-radius:10px;font-family:inherit;font-size:14px;background:#fff;font-weight:bold">
+          <option value="server-ceroboh.latihan">server-ceroboh.latihan (banyak pintu terbuka)</option>
+          <option value="server-rapi.latihan">server-rapi.latihan (rapi &amp; terjaga)</option>
+        </select>
+        <label for="npMode" style="margin-top:8px">Jenis pemeriksaan</label>
+        <select id="npMode" style="width:100%;padding:11px 12px;border:2px solid var(--bx-ink);border-radius:10px;font-family:inherit;font-size:14px;background:#fff;font-weight:bold">
+          <option value="cepat">Cepat — cuma cek pintu terbuka (nmap)</option>
+          <option value="versi">Lengkap — sekalian cek versi (nmap -sV)</option>
+        </select>
+        <div class="row">
+          <button class="btn play" id="npBtn" onclick="runNmap()">Jalankan Nmap</button>
+        </div>
+        <div class="bar"><i id="npFill"></i></div>
+        <div class="bar-label" id="npLabel">Belum dimulai.</div>
+      </div>
+
+      <div class="terminal" style="margin-top:14px">
+        <div class="bar-top">
+          <span class="dot" style="background:#ff5f57"></span>
+          <span class="dot" style="background:#ffbd2e"></span>
+          <span class="dot" style="background:#28c840"></span>
+          <span class="ttl">terminal-latihan — nmap</span>
+        </div>
+        <pre id="npTerm"><span class="dim">Klik “Jalankan Nmap” untuk memulai simulasi...</span></pre>
+      </div>
+
+      <div id="npTable"></div>
+      <ul class="finds" id="npFinds"></ul>
+    </div>
+  </div>
+</section>
+
+<section id="tembok">
+  <div class="sec-title"><div class="num" style="background:#10af13;color:#fff">2</div><h2>Giliranmu: Jadi Tembok Api!</h2></div>
+  <div class="card block">
+    <div class="studs"><span class="stud"></span><span class="stud"></span><span class="stud"></span></div>
+    <h3>🧱 Kunci Pintu yang Tidak Perlu</h3>
+    <p class="desc">Ini daftar pintu yang terbuka di <code>server-ceroboh.latihan</code>. Tugasmu: klik tombol untuk <b>menutup</b> pintu yang tidak seharusnya terbuka ke internet — dan <b>biarkan terbuka</b> pintu yang memang dibutuhkan.</p>
+    <p class="desc">Hati-hati! Kalau kamu menutup semua pintu, websitenya jadi tidak bisa dikunjungi siapa pun. Penjaga yang baik tahu <b>mana yang perlu</b>.</p>
+
+    <div id="fwList"></div>
+
+    <div class="row" style="margin-top:16px">
+      <button class="btn play" onclick="cekFirewall()">Periksa Jawabanku</button>
+      <button class="btn hint small" onclick="resetFirewall()">Ulangi</button>
+    </div>
+    <div id="fwScore"></div>
+  </div>
+</section>
+
+<section id="lindungi">
+  <div class="sec-title"><div class="num" style="background:var(--bx-green)">✓</div><h2>Cara Melindungi Komputer</h2></div>
+  <table class="tbl">
+    <tr><th style="width:32%">Masalah</th><th>Cara Memperbaiki</th></tr>
+    <tr>
+      <td><b>Banyak pintu terbuka</b><br>Padahal tidak dipakai</td>
+      <td>Matikan layanan yang tidak diperlukan. Aturan emasnya: <b>kalau tidak dipakai, tutup saja.</b> Pintu yang tertutup tidak bisa diserang.</td>
+    </tr>
+    <tr>
+      <td><b>Tidak ada tembok api</b><br>Semua ketukan diterima</td>
+      <td>Pasang <i>firewall</i> supaya hanya pintu tertentu yang boleh dijawab, dan hanya dari alamat yang dipercaya.</td>
+    </tr>
+    <tr>
+      <td><b>Database terbuka</b><br><code>3306</code> bisa diakses publik</td>
+      <td>Gudang data cukup diakses dari dalam saja. Jangan pernah membukanya ke internet.</td>
+    </tr>
+    <tr>
+      <td><b>Layanan tanpa kunci</b><br><code>telnet</code>, <code>ftp</code></td>
+      <td>Ganti dengan versi terkunci: <code>ssh</code> menggantikan <code>telnet</code>, <code>sftp</code> menggantikan <code>ftp</code>.</td>
+    </tr>
+    <tr>
+      <td><b>Versi program usang</b><br>Kelemahan sudah diketahui umum</td>
+      <td>Rajin perbarui (update) semua layanan. Ini pertahanan nomor satu, sama seperti di materi Web Scanning.</td>
+    </tr>
+    <tr>
+      <td><b>Sandi mudah ditebak</b><br>Pintu <code>22</code> / <code>3389</code></td>
+      <td>Pakai sandi panjang atau kunci digital, dan batasi jumlah percobaan masuk yang gagal.</td>
+    </tr>
+  </table>
+</section>
+
+<section id="kuis-port">
+  <div class="sec-title kuis"><div class="num" style="background:var(--bx-green);color:var(--bx-yellow)">★</div><h2>Kuis Penjaga Pintu</h2></div>
+  <p class="sec-sub">Uji pemahamanmu tentang Port Scanning.</p>
+  <div class="quiz block" id="portQuizBox"></div>
+  <p style="margin-top:22px"><a class="cta" href="index.html">← Kembali ke Beranda &amp; lanjut materi berikutnya</a></p>
+</section>
+
+</div>
+
+<footer>
+  <p><b>Akademi Keamanan Siber Bloxy</b> — media belajar untuk anak-anak.</p>
+  <p>Semua target <code>.latihan</code> di halaman ini fiktif dan hasilnya sudah ditulis lebih dulu. Tidak ada Nmap yang benar-benar dijalankan, tidak ada port yang benar-benar diketuk, dan tidak ada koneksi jaringan yang dibuat.</p>
+  <p>Website ini tidak berafiliasi dengan Roblox Corporation. Ingat aturan emas: <b>hanya pindai komputer milikmu sendiri atau yang sudah memberi izin</b> — jadilah penjaga, bukan penjahat! 🛡️</p>
+</footer>
+
+</body>
+</html>

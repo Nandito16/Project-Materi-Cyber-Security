@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Brute Force — Akademi Keamanan Siber Bloxy</title>
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/lab.css" />
+<link rel="stylesheet" href="css/brute-force.css" />
+<script src="js/bruteforce.js" defer></script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <div class="logo"><span class="cube"><span>🔨</span></span> Brute Force</div>
+    <nav class="menu">
+      <a href="#aturan">Aturan Main</a>
+      <a href="#apa">Apa Itu?</a>
+      <a href="#hydra">Hydra &amp; Simulasi</a>
+      <a href="#lindungi">Cara Melindungi</a>
+      <a href="index.html">← Beranda</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero wrap">
+  <h1>Jadi <span class="hl">Penjaga Sandi</span> yang Kuat!</h1>
+  <p class="sub">Brute force adalah cara penjahat <b>menebak sandi dengan mencoba ribuan kemungkinan</b> secepat kilat sampai ada yang cocok. Di sini kamu belajar cara kerjanya — dan cara membuat sandi yang <b>tidak bisa ditebak</b>.</p>
+</div>
+
+<div class="wrap">
+
+<section id="aturan">
+  <div class="sec-title aturanmain"><div class="num" style="background:var(--bx-orange)">!</div><h2>Aturan Main — Baca Dulu!</h2></div>
+  <div class="rule-box">
+    <h3>⚠️ Menebak paksa sandi akun orang lain tanpa izin itu <span class="dilarang">DILARANG</span></h3>
+    <ol>
+      <li><b>Selalu minta izin dulu.</b> Mencoba menebak sandi akun orang lain melanggar hukum — sama seperti mencoba ribuan kunci di gembok rumah tetangga.</li>
+      <li><b>Hanya berlatih di akun milikmu sendiri</b> — atau di halaman latihan khusus seperti ini yang memang dibuat untuk belajar.</li>
+      <li><b>Jangan pernah mencoba menebak sandi</b> game, media sosial, email, atau akun siapa pun. Itu bukan lelucon.</li>
+      <li><b>Kalau kamu tahu sebuah akun pakai sandi lemah, ingatkan baik-baik.</b> Jangan dibobol, jangan disebar.</li>
+      <li><b>Ilmu ini untuk membuat sandi kuat, bukan membobol.</b> Penjaga yang baik memperkuat kuncinya sendiri.</li>
+    </ol>
+  </div>
+</section>
+
+<section id="apa">
+  <div class="sec-title"><div class="num" style="background:var(--bx-sky)">?</div><h2>Apa Itu Brute Force?</h2></div>
+  <div class="grid">
+    <div class="card block">
+      <div class="studs"><span class="stud"></span><span class="stud"></span><span class="stud"></span></div>
+      <h3>🔨 Menebak dengan cara paksa</h3>
+      <p class="desc"><b>Brute force</b> artinya “tenaga kasar”. Penjahat tidak memakai trik pintar — ia hanya <b>mencoba sandi satu per satu</b> secepat mungkin sampai ada yang cocok.</p>
+      <p class="desc">Komputer bisa mencoba <b>ribuan bahkan jutaan</b> sandi per detik. Jadi kalau sandimu pendek atau umum, ia bisa ketemu dalam sekejap.</p>
+      <p class="desc">Sering kali penjahat mulai dari <b>daftar sandi paling umum</b> (disebut <i>wordlist</i>) — karena banyak orang memakai sandi yang mudah ditebak.</p>
+      <div class="safe-tip"><b>Idenya:</b> semakin <b>panjang dan aneh</b> sandimu, semakin banyak kemungkinan yang harus dicoba — sampai butuh ratusan tahun!</div>
+    </div>
+    <div class="card block">
+      <div class="studs"><span class="stud"></span><span class="stud"></span><span class="stud"></span></div>
+      <h3>📋 Sandi umum vs sandi kuat</h3>
+      <p class="desc">Sandi yang ada di <i>wordlist</i> hampir langsung ketemu. Sandi yang panjang &amp; unik butuh waktu sangat lama.</p>
+      <div class="pw-row">
+        <div class="pw-card weak">
+          <h4>❌ Lemah</h4>
+          <code class="pw">123456</code>
+          <p class="why">Ada di urutan atas daftar umum. Ketemu dalam sekejap.</p>
+        </div>
+        <div class="pw-card strong">
+          <h4>✅ Kuat</h4>
+          <code class="pw">B10xy!Naga#77</code>
+          <p class="why">Panjang, campur huruf besar-kecil, angka, dan simbol. Hampir mustahil ditebak.</p>
+        </div>
+      </div>
+      <ul class="speed">
+        <li><span>“123456”</span><span class="t fast">± seketika</span></li>
+        <li><span>“bloxy123”</span><span class="t fast">beberapa detik</span></li>
+        <li><span>“B10xy!Naga#77”</span><span class="t slow">ratusan tahun</span></li>
+      </ul>
+      <div class="safe-tip">Perkiraan di atas disederhanakan untuk belajar, tapi <b>idenya benar</b>: panjang + campuran karakter = jauh lebih aman.</div>
+    </div>
+  </div>
+</section>
+
+<section id="hydra">
+  <div class="sec-title"><div class="num" style="background:var(--bx-orange);color:#fff">1</div><h2>Hydra — “Mesin Penebak Sandi”</h2></div>
+  <div class="grid">
+    <div class="card block">
+      <div class="studs"><span class="stud"></span><span class="stud"></span><span class="stud"></span></div>
+      <h3>🧠 Cara Kerjanya</h3>
+      <p class="desc"><b>Hydra</b> adalah program yang bisa mencoba sandi dari sebuah <i>wordlist</i> ke sebuah kotak login, <b>otomatis dan sangat cepat</b>.</p>
+      <p class="desc">Perintahnya kira-kira seperti ini:</p>
+      <table class="tbl">
+        <tr><th>Perintah Hydra (contoh)</th></tr>
+        <tr><td><code>hydra -l pemain1 -P daftar-sandi.txt login.bloxy.latihan</code></td></tr>
+      </table>
+      <p class="desc" style="margin-top:12px">
+        • <code>-l pemain1</code> → nama pengguna yang mau ditebak<br>
+        • <code>-P daftar-sandi.txt</code> → daftar sandi yang akan dicoba<br>
+        • lalu alamat target di paling akhir
+      </p>
+      <div class="safe-tip"><b>Hydra bukan alat jahat.</b> Petugas keamanan memakainya untuk <b>menguji kekuatan sandi sistem mereka sendiri</b> supaya bisa diperbaiki. Yang menentukan baik atau buruk adalah <b>izin</b> dan <b>niat</b>.</div>
+    </div>
+
+    <div class="card block">
+      <div class="studs"><span class="stud"></span><span class="stud"></span><span class="stud"></span></div>
+      <h3>🔨 Simulasi Hydra</h3>
+      <p class="desc">Pilih jenis akun (semuanya fiktif!), lalu jalankan Hydra dan bandingkan hasilnya:</p>
+      <div class="demo">
+        <label for="bfMode">Jenis akun target</label>
+        <select id="bfMode" class="mode-select">
+          <option value="lemah">Akun Lemah (sandi umum, tanpa pengaman)</option>
+          <option value="kuat">Akun Kuat (sandi unik + akun dikunci)</option>
+        </select>
+        <div class="row" style="margin-top:10px">
+          <button class="btn play" id="bfBtn" onclick="runHydra()">Jalankan Hydra</button>
+          <button class="btn hint small" style="background:var(--bx-slate)" onclick="bfReset()">Ulangi</button>
+        </div>
+        <div class="bar"><i id="bfFill"></i></div>
+        <div class="bar-label" id="bfLabel">Belum dijalankan.</div>
+      </div>
+      <div class="terminal" style="margin-top:12px">
+        <div class="bar-top">
+          <span class="dot" style="background:#ff5f57"></span>
+          <span class="dot" style="background:#ffbd2e"></span>
+          <span class="dot" style="background:#28c840"></span>
+          <span class="ttl">terminal-latihan — hydra</span>
+        </div>
+        <pre id="bfTerm"><span class="dim">Klik “Jalankan Hydra” untuk memulai simulasi...</span></pre>
+      </div>
+      <ul class="finds" id="bfFinds"></ul>
+    </div>
+  </div>
+</section>
+
+<section id="lindungi">
+  <div class="sec-title"><div class="num" style="background:var(--bx-green)">✓</div><h2>Cara Melindungi dari Brute Force</h2></div>
+  <table class="tbl">
+    <tr><th style="width:34%">Cara</th><th>Penjelasan</th></tr>
+    <tr>
+      <td><b>Sandi panjang &amp; unik</b><br>(pertahanan utama)</td>
+      <td>Makin panjang dan makin campur (huruf besar-kecil, angka, simbol), makin banyak kemungkinan yang harus dicoba. Jangan pakai sandi dari daftar umum seperti <code>123456</code>.</td>
+    </tr>
+    <tr>
+      <td><b>Batasi percobaan</b><br>(rate limiting)</td>
+      <td>Beri jeda setelah beberapa kali salah, supaya penebak tidak bisa mencoba ribuan kali per detik.</td>
+    </tr>
+    <tr>
+      <td><b>Kunci akun sementara</b><br>(lockout)</td>
+      <td>Kunci akun setelah, misalnya, 5 kali salah. Ini membuat brute force hampir mustahil — seperti di simulasi mode “Akun Kuat”.</td>
+    </tr>
+    <tr>
+      <td><b>Verifikasi 2 langkah</b><br>(2FA)</td>
+      <td>Selain sandi, minta kode sekali pakai dari HP. Walau sandi tertebak, penjahat tetap tidak bisa masuk.</td>
+    </tr>
+    <tr>
+      <td><b>CAPTCHA</b></td>
+      <td>Pertanyaan “apakah kamu manusia?” membuat robot penebak kesulitan mencoba otomatis.</td>
+    </tr>
+    <tr>
+      <td><b>Simpan sandi teracak</b><br>(hashing)</td>
+      <td>Website menyimpan sandi dalam bentuk teracak, jadi kalaupun bocor tetap sulit dipakai.</td>
+    </tr>
+  </table>
+</section>
+
+<section id="kuis-bf">
+  <div class="sec-title kuis"><div class="num" style="background:var(--bx-green);color:var(--bx-yellow)">★</div><h2>Kuis Penjaga Sandi</h2></div>
+  <p class="sec-sub">Uji pemahamanmu tentang Brute Force.</p>
+  <div class="quiz block" id="bfQuizBox"></div>
+  <p style="margin-top:22px"><a class="cta" href="index.html">← Kembali ke Beranda &amp; lanjut materi berikutnya</a></p>
+</section>
+
+</div>
+
+<footer>
+  <p><b>Akademi Keamanan Siber Bloxy</b> — media belajar untuk anak-anak.</p>
+  <p>Semua login, akun, dan target <code>.latihan</code> di halaman ini fiktif. Tidak ada server yang ditembus, tidak ada alat Hydra yang benar-benar dijalankan, dan tidak ada koneksi jaringan yang dibuat. Semua “percobaan sandi” hanya teks untuk diperlihatkan.</p>
+  <p>Website ini tidak berafiliasi dengan Roblox Corporation. Ingat aturan emas: <b>hanya berlatih di akun milikmu sendiri atau yang sudah memberi izin</b> — jadilah penjaga, bukan penjahat! 🛡️</p>
+</footer>
+
+</body>
+</html>

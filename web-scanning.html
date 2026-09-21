@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Web Scanning — Akademi Keamanan Siber Bloxy</title>
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/lab.css" />
+<link rel="stylesheet" href="css/web-scanning.css" />
+<script src="js/scanning.js" defer></script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <div class="logo">
+      <span class="cube"><span>🔎</span></span>
+      Web Scanning
+    </div>
+    <nav class="menu">
+      <a href="#aturan">Aturan Main</a>
+      <a href="#apa">Apa Itu?</a>
+      <a href="#whatweb">WhatWeb</a>
+      <a href="#gobuster">Gobuster</a>
+      <a href="#lindungi">Cara Melindungi</a>
+      <a href="index.html">← Beranda</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero wrap">
+  <h1>Jadi <span class="hl">Detektif Website</span>!</h1>
+  <p class="sub">
+    Web Scanning adalah cara melihat “dari luar” sebuah website
+    untuk tahu ia dibuat dari apa dan punya pintu apa saja.
+    Petugas keamanan memakainya untuk
+    <b>memeriksa dan memperbaiki</b> website milik sendiri.
+  </p>
+</div>
+
+<div class="wrap">
+
+<section id="aturan">
+  <div class="sec-title aturanmain">
+    <div class="num" style="background:var(--bx-orange)">!</div>
+    <h2>Aturan Main — Baca Dulu!</h2>
+  </div>
+  <div class="rule-box">
+    <h3>⚠️ Memindai website milik orang lain tanpa izin itu <span class="dilarang">DILARANG</span></h3>
+    <ol>
+      <li><b>Selalu minta izin dulu.</b> Memindai website orang lain tanpa izin bisa melanggar hukum, sama seperti mengecek-ngecek pintu rumah tetangga satu per satu.</li>
+      <li><b>Hanya pindai milikmu sendiri</b> atau website latihan khusus yang memang dibuat untuk belajar.</li>
+      <li><b>Kalau menemukan lubang keamanan, laporkan.</b> Beri tahu orang dewasa atau pemilik website. Jangan diutak-atik, jangan disebar.</li>
+      <li><b>Ilmu ini untuk melindungi, bukan merusak.</b> Detektif yang baik menjaga, bukan mencuri.</li>
+    </ol>
+  </div>
+</section>
+
+<section id="apa">
+  <div class="sec-title">
+    <div class="num" style="background:var(--bx-sky)">?</div>
+    <h2>Apa Itu Web Scanning?</h2>
+  </div>
+
+  <div class="learning-slider">
+    <button class="slide-arrow left" id="prevApa" aria-label="Materi sebelumnya">←</button>
+
+    <div class="learning-window">
+      <div class="card block learning-card active" data-slide="0">
+        <div class="studs">
+          <span class="stud"></span>
+        </div>
+        <h3>Bayangkan</h3>
+        <p class="desc">
+          Sebelum tidur, kamu berkeliling rumah:
+          "Pintu depan terkunci? Jendela dapur tertutup?
+          Ada pintu belakang yang lupa dikunci?"
+        </p>
+        <p class="desc">
+          Web Scanning persis seperti itu, tapi untuk website.
+          Kita memeriksa:
+          <b>website ini dibuat pakai apa?</b>
+          dan <b>halaman apa saja yang ada di dalamnya?</b>
+        </p>
+      </div>
+
+      <div class="card block learning-card" data-slide="1">
+        <div class="studs">
+          <span class="stud"></span>
+          <span class="stud"></span>
+        </div>
+        <h3>Alat</h3>
+        <p class="desc">
+          Detektif website biasanya menanyakan:
+        </p>
+        <table class="tbl">
+          <tr>
+            <th>Alat</th>
+            <th>Pertanyaan</th>
+          </tr>
+          <tr>
+            <td>
+              <b style="color:#10af13">WhatWeb</b>
+            </td>
+            <td>
+              <b>"Kamu terbuat dari apa?"</b>
+              <br>
+              Server, bahasa program, versi
+            </td>
+          </tr>
+        </table>
+        <div class="safe-tip">
+          Alat ini tidak merusak apa pun mereka hanya
+          <b>melihat dan mencatat.</b>
+        </div>
+      </div>
+
+      <div class="card block learning-card" data-slide="2">
+        <div class="studs">
+          <span class="stud"></span>
+          <span class="stud"></span>
+          <span class="stud"></span>
+        </div>
+        <h3>Cara Kerja</h3>
+        <p class="desc">
+          Setiap website diam-diam "memperkenalkan diri"
+          saat kita membukanya.
+          Website mengirim catatan kecil berisi nama server
+          dan versinya.
+        </p>
+        <p class="desc">
+          WhatWeb membaca catatan itu lalu merangkumnya.
+          Seperti bertanya ke ibu:
+        </p>
+        <p class="desc">
+          <strong>Kamu:</strong>
+          "Ibu membuat telur pakai bahan apa saja"
+        </p>
+        <p class="desc">
+          <strong>Ibu:</strong>
+          "Pakai telur, garam, minyak, dll"
+        </p>
+      </div>
+    </div>
+
+    <button class="slide-arrow right" id="nextApa" aria-label="Materi berikutnya">→</button>
+  </div>
+
+  <div class="slide-indicator">
+    <span class="slide-dot active"></span>
+    <span class="slide-dot"></span>
+    <span class="slide-dot"></span>
+  </div>
+  <div class="slide-hint">Gunakan tombol ← → untuk membaca bagian berikutnya</div>
+</section>
+
+<section id="whatweb">
+  <div class="sec-title">
+    <div class="num" style="background:var(--bx-green);color:#fff">1</div>
+    <h2>WhatWeb — “Kamu Terbuat dari Apa?”</h2>
+  </div>
+
+  <div class="grid">
+    <div class="card block">
+      <div class="studs">
+        <span class="stud"></span>
+        <span class="stud"></span>
+        <span class="stud"></span>
+      </div>
+      <h3>🧠 Cara Kerjanya</h3>
+      <p class="desc">
+        Setiap website diam-diam “memperkenalkan diri”
+        saat kita membukanya.
+        Ia mengirim catatan kecil berisi nama server dan versinya.
+        WhatWeb membaca catatan itu lalu merangkumnya.
+      </p>
+      <p class="desc">
+        Seperti melihat label di kaus:
+        <i>“bahan katun, ukuran M, buatan 2019”</i>.
+      </p>
+      <div class="safe-tip">
+        <b>Kenapa penting?</b>
+        Kalau sebuah website memakai versi program yang sudah
+        <b>tua</b>, biasanya versi itu punya kelemahan yang sudah
+        diketahui umum. Pemilik website perlu tahu ini supaya bisa
+        <b>memperbaruinya</b>.
+      </div>
+    </div>
+
+    <div class="card block input">
+      <div class="studs">
+        <span class="stud"></span>
+        <span class="stud"></span>
+        <span class="stud"></span>
+      </div>
+      <h3>🔎 Simulasi WhatWeb</h3>
+      <p class="desc">
+        Pilih website latihan (semuanya fiktif!),
+        lalu jalankan pemindaian dan bandingkan hasilnya.
+      </p>
+      <div class="demo">
+        <label for="wwTarget">
+          Pilih target latihan
+        </label>
+        <select id="wwTarget" style="width:100%;padding:11px 12px;border:2px solid var(--bx-ink);border-radius:10px;font-family:inherit;font-size:14px;background:#fff;font-weight:bold">
+          <option value="toko-bloxy.latihan">
+            Website Ceroboh
+          </option>
+          <option value="blog-bloxy.latihan">
+            Website Rapi
+          </option>
+        </select>
+        <div class="row">
+          <button class="btn play" id="wwBtn" onclick="runWhatWeb()">
+            Jalankan WhatWeb
+          </button>
+        </div>
+      </div>
+      <div class="terminal" style="margin-top:14px">
+        <div class="bar-top">
+          <span class="dot" style="background:#ff5f57"></span>
+          <span class="dot" style="background:#ffbd2e"></span>
+          <span class="dot" style="background:#28c840"></span>
+          <span class="ttl">
+            terminal-latihan — whatweb
+          </span>
+        </div>
+        <pre id="wwTerm"><span class="dim">Klik “Jalankan WhatWeb” untuk memulai simulasi...</span></pre>
+      </div>
+      <ul class="finds" id="wwFinds"></ul>
+    </div>
+  </div>
+</section>
+
+<section id="gobuster">
+  <div class="sec-title">
+    <div class="num" style="background:var(--bx-green)">2</div>
+    <h2>Gobuster — “Pintumu Ada di Mana Saja?”</h2>
+  </div>
+
+  <div class="grid">
+    <div class="card block">
+      <div class="studs">
+        <span class="stud"></span>
+        <span class="stud"></span>
+        <span class="stud"></span>
+      </div>
+      <h3>🧠 Cara Kerjanya</h3>
+      <p class="desc">
+        Gobuster punya <b>daftar kata</b>
+        (disebut <i>wordlist</i>) berisi nama-nama folder yang umum:
+        <code>/admin</code>,
+        <code>/backup</code>,
+        <code>/uploads</code>,
+        dan ribuan lainnya.
+      </p>
+      <p class="desc">
+        Ia mencoba satu per satu:
+        “Ada halaman <code>/admin</code> tidak?”
+        Kalau website menjawab <b>ada</b>,
+        Gobuster mencatatnya.
+      </p>
+      <p class="desc">
+        Mirip tukang pos yang mengetuk tiap pintu
+        untuk tahu pintu mana yang berpenghuni —
+        ia tidak masuk, hanya mencatat.
+      </p>
+      <div class="safe-tip">
+        <b>Arti kode angka:</b><br>
+        <b>200</b> = halaman ada dan terbuka<br>
+        <b>301</b> = ada, tapi dialihkan ke tempat lain<br>
+        <b>403</b> = ada, tapi dilarang masuk<br>
+        <b>404</b> = tidak ada apa-apa
+      </div>
+    </div>
+
+    <div class="card block input">
+      <div class="studs">
+        <span class="stud"></span>
+        <span class="stud"></span>
+        <span class="stud"></span>
+      </div>
+      <h3>📁 Simulasi Gobuster</h3>
+      <p class="desc">
+        Jalankan pencarian pada
+        <code>toko-bloxy.latihan</code>.
+        Perhatikan halaman mana yang “ketemu” —
+        dan mana yang berbahaya kalau dibiarkan terbuka.
+      </p>
+      <div class="demo">
+        <div class="row">
+          <button class="btn play" id="gbBtn" onclick="runGobuster()">
+            Jalankan Gobuster
+          </button>
+        </div>
+        <div class="bar">
+          <i id="gbFill"></i>
+        </div>
+        <div class="bar-label" id="gbLabel">
+          Belum dimulai.
+        </div>
+      </div>
+      <div class="terminal" style="margin-top:14px">
+        <div class="bar-top">
+          <span class="dot" style="background:#ff5f57"></span>
+          <span class="dot" style="background:#ffbd2e"></span>
+          <span class="dot" style="background:#28c840"></span>
+          <span class="ttl">
+            terminal-latihan — gobuster
+          </span>
+        </div>
+        <pre id="gbTerm"><span class="dim">Klik “Jalankan Gobuster” untuk memulai simulasi...</span></pre>
+      </div>
+      <ul class="finds" id="gbFinds"></ul>
+    </div>
+  </div>
+</section>
+
+<section id="lindungi">
+  <div class="sec-title">
+    <div class="num" style="background:var(--bx-green)">
+      ✓
+    </div>
+    <h2>Cara Melindungi Website</h2>
+  </div>
+
+  <table class="tbl">
+    <tr>
+      <th style="width:32%">Masalah</th>
+      <th>Cara Memperbaiki</th>
+    </tr>
+    <tr>
+      <td>
+        <b>Versi server terlihat</b><br>
+        <code>nginx/1.18.0</code>
+      </td>
+      <td>
+        Sembunyikan nomor versi di pengaturan server,
+        supaya penjahat tidak tahu kelemahan mana yang bisa dicari.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <b>Program sudah usang</b><br>
+        PHP/WordPress lama
+      </td>
+      <td>
+        Rajin perbarui (update) semua program ke versi terbaru.
+        Ini pertahanan nomor satu.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <b>Folder bisa diintip</b><br>
+        <code>/uploads</code> terbuka
+      </td>
+      <td>
+        Matikan <i>directory listing</i>
+        supaya isi folder tidak bisa dilihat sembarang orang.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <b>File rahasia terbuka</b><br>
+        <code>/backup</code>,
+        <code>/.git</code>
+      </td>
+      <td>
+        Jangan pernah menaruh file cadangan atau kode sumber
+        di dalam folder website yang bisa diakses publik.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <b>Ditebak terus-menerus</b><br>
+        Ribuan percobaan
+      </td>
+      <td>
+        Pasang pembatas kecepatan
+        (<i>rate limiting</i>)
+        supaya satu orang tidak bisa mencoba ribuan alamat
+        dalam sekejap.
+      </td>
+    </tr>
+  </table>
+</section>
+
+<section id="kuis-scan">
+  <div class="sec-title kuis">
+    <div class="num" style="background:var(--bx-green);color:var(--bx-yellow)">
+      ★
+    </div>
+    <h2>Kuis Detektif Website</h2>
+  </div>
+  <p class="sec-sub">
+    Uji pemahamanmu tentang Web Scanning.
+  </p>
+  <div class="quiz block" id="scanQuizBox"></div>
+  <p style="margin-top:22px">
+    <a class="cta" href="index.html">
+      ← Kembali ke Beranda &amp; lanjut materi berikutnya
+    </a>
+  </p>
+</section>
+
+</div>
+
+<footer>
+  <p>
+    <b>Akademi Keamanan Siber Bloxy</b>
+    — media belajar untuk anak-anak.
+  </p>
+  <p>
+    Semua target <code>.latihan</code> di halaman ini fiktif
+    dan hasilnya sudah ditulis lebih dulu.
+    Tidak ada alat WhatWeb atau Gobuster yang benar-benar dijalankan,
+    dan tidak ada koneksi jaringan yang dibuat.
+  </p>
+  <p>
+    Website ini tidak berafiliasi dengan Roblox Corporation.
+    Ingat aturan emas:
+    <b>hanya pindai website milikmu sendiri atau yang sudah memberi izin</b>
+    — jadilah penjaga, bukan penjahat! 🛡️
+  </p>
+</footer>
+
+</body>
+</html>

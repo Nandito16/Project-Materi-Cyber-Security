@@ -1,0 +1,9 @@
+:root{
+  --page-accent:var(--bx-purple);
+}
+
+#scanScore{font-weight:900;font-size:18px;margin-top:8px}
+
+#wwTerm,#gbTerm{min-height:170px}
+
+#gbFinds li b,#wwFinds li b{color:var(--bx-red)}

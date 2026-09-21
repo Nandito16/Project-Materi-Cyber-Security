@@ -1,0 +1,63 @@
+/* ============================================================
+   Akademi Keamanan Siber Bloxy - brute-force.css
+
+   DIPAKAI OLEH: brute-force.html SAJA.
+
+   Halaman ini juga memuat base.css (kerangka umum) dan
+   lab.css (terminal, tabel, kotak aturan, bilah kemajuan,
+   daftar temuan). File ini hanya berisi ciri khas halaman
+   Brute Force: warna oranye, pemilih mode, dan "kartu sandi".
+   ============================================================ */
+
+/* ---------- 1. Warna khas halaman ini: ORANYE ---------- */
+:root{
+  --page-accent:var(--bx-orange);
+}
+
+/* ---------- 2. Pemilih mode pada simulasi ---------- */
+.mode-select{
+  width:100%;padding:11px 12px;border:2px solid var(--bx-ink);border-radius:10px;
+  font-family:inherit;font-size:14px;background:#fff;font-weight:bold;
+}
+
+/* ---------- 3. Label mode (lemah / kuat) ---------- */
+.mode-pill{
+  display:inline-block;padding:3px 11px;border-radius:999px;border:2px solid #000;
+  font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.3px;
+}
+.mode-weak{background:#fde8e6;color:#9c241b}
+.mode-strong{background:#e8f7ee;color:#0f6b3a}
+
+/* ---------- 4. Deretan "kartu sandi" untuk contoh lemah vs kuat ---------- */
+.pw-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.pw-card{
+  border:3px solid var(--bx-ink);border-radius:12px;padding:12px;background:#fff;
+  box-shadow:0 4px 0 rgba(0,0,0,.12);
+}
+.pw-card.weak{background:#fef4f3;border-color:var(--bx-red)}
+.pw-card.strong{background:#f2fbf6;border-color:var(--bx-green)}
+.pw-card h4{margin:0 0 8px;font-size:15px;display:flex;align-items:center;gap:7px}
+.pw-card .pw{
+  font-family:Consolas,Menlo,monospace;font-weight:bold;font-size:15px;
+  background:#14161a;color:#ffcf33;border-radius:8px;padding:8px 10px;display:block;
+  word-break:break-all;
+}
+.pw-card .why{margin:8px 0 0;font-size:13px;color:#48525d}
+
+/* ---------- 5. Meteran "waktu tebak" ---------- */
+.speed{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:7px}
+.speed li{
+  background:#fff;border:2px solid var(--bx-line);border-radius:10px;
+  padding:9px 12px;font-size:14px;display:flex;justify-content:space-between;gap:12px;align-items:center;
+}
+.speed li .t{font-weight:900;font-family:Consolas,Menlo,monospace}
+.speed li .fast{color:var(--bx-red)}
+.speed li .slow{color:#0f6b3a}
+
+/* ---------- 6. Skor kuis halaman Brute Force ---------- */
+#bfScore{font-weight:900;font-size:18px;margin-top:8px}
+
+/* ---------- 7. Tampilan HP ---------- */
+@media(max-width:720px){
+  .pw-row{grid-template-columns:1fr}
+}

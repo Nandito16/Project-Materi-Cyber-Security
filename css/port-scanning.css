@@ -1,20 +1,7 @@
-/* ============================================================
-   Akademi Keamanan Siber Bloxy - port-scanning.css
-
-   DIPAKAI OLEH: port-scanning.html SAJA.
-
-   Halaman ini juga memuat base.css (kerangka umum) dan
-   lab.css (terminal, tabel, daftar temuan).
-   File ini hanya berisi ciri khas halaman Port Scanning:
-   label status pintu, ilustrasi pintu, dan mini-game tembok api.
-   ============================================================ */
-
-/* ---------- 1. Warna khas halaman ini: HIJAU ---------- */
 :root{
   --page-accent:var(--bx-green);
 }
 
-/* ---------- 2. Label status pintu (port) ---------- */
 .st{
   display:inline-block;padding:3px 11px;border-radius:999px;border:2px solid #000;
   font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.3px;
@@ -23,10 +10,8 @@
 .st-close{background:#e8f7ee;color:#0f6b3a}   /* tertutup  */
 .st-filter{background:#e5f2fc;color:#0a4d80}  /* tersaring */
 
-/* Keterangan versi layanan di tabel (mis. "nginx 1.18.0") */
 .dim2{color:#7d8894;font-weight:normal;font-size:12px;margin-left:6px}
 
-/* ---------- 3. Ilustrasi "gedung berpintu" ---------- */
 .doors{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
 .door{
   border:3px solid var(--bx-ink);border-radius:10px;padding:10px 6px;text-align:center;
@@ -36,7 +21,6 @@
 .door.open{background:#fde8e6;border-color:var(--bx-red)}
 .door.shut{background:#e8f7ee;border-color:var(--bx-green)}
 
-/* ---------- 4. Mini-game "Jadi Tembok Api" ---------- */
 #fwList{display:grid;gap:10px;margin-top:12px}
 .fw-item{
   display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;
@@ -49,11 +33,118 @@
 .fw-no{border-color:var(--bx-red);background:#fef4f3}     /* jawaban salah */
 #fwScore{font-weight:900;font-size:17px;margin-top:12px}
 
-/* ---------- 5. Skor kuis halaman Port Scanning ---------- */
 #portScore{font-weight:900;font-size:18px;margin-top:8px}
 
-/* ---------- 6. Tampilan HP ---------- */
 @media(max-width:720px){
   .doors{grid-template-columns:repeat(3,1fr)}
   .fw-item{grid-template-columns:1fr}
 }
+
+.Illustrasion{
+  display: flex;justify-content: center;margin:12px 0 16px
+}
+
+.Illustrasion img{
+  width: 100%;max-width: 300px;height: 200px;object-fit: contain;border-radius: 12px;
+}
+
+.gb-input-wrap {
+  position: relative;
+  display: inline-block;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+#gbCommandPreview {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  white-space: pre;
+  pointer-events: none;
+  color: white;
+  font: inherit;
+  padding: 0;
+  border: none;
+}
+
+#gbCommand {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  background: transparent;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent;
+  caret-color: white;
+  font: inherit;
+  border: none;
+  outline: none;
+}
+
+#gbCommandPreview .gb-command {
+  color: #10af13;
+  font-weight: bold;
+}
+
+#gbCommandPreview .gb-flag {
+  color: #ff6a00;
+  font-weight: bold;
+}
+
+.q-slide {
+    animation: fadeIn 0.4s ease-in-out;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateX(10px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  .opts {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .opt {
+    padding: 12px 16px;
+    border: 2px solid var(--bx-slate, #cbd5e1);
+    background: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 1rem;
+    transition: all 0.2s;
+  }
+  .opt:hover:not(:disabled) {
+    border-color: var(--bx-blue, #3b82f6);
+    background: #f1f5f9;
+  }
+  .opt:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+  }
+  .opt.correct {
+    background-color: var(--bx-green, #28c840) !important;
+    color: #fff !important;
+    border-color: var(--bx-green, #28c840) !important;
+  }
+  .opt.wrong {
+    background-color: var(--bx-red, #ff5f57) !important;
+    color: #fff !important;
+    border-color: var(--bx-red, #ff5f57) !important;
+  }
+  #portScoreResult {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--bx-blue, #3b82f6);
+    margin: 15px 0;
+  }
+  .quiz-nav {
+    margin-top: 20px;
+    display: none;
+    text-align: right;
+  }

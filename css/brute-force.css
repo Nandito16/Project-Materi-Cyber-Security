@@ -1,26 +1,12 @@
-/* ============================================================
-   Akademi Keamanan Siber Bloxy - brute-force.css
-
-   DIPAKAI OLEH: brute-force.html SAJA.
-
-   Halaman ini juga memuat base.css (kerangka umum) dan
-   lab.css (terminal, tabel, kotak aturan, bilah kemajuan,
-   daftar temuan). File ini hanya berisi ciri khas halaman
-   Brute Force: warna oranye, pemilih mode, dan "kartu sandi".
-   ============================================================ */
-
-/* ---------- 1. Warna khas halaman ini: ORANYE ---------- */
 :root{
   --page-accent:var(--bx-orange);
 }
 
-/* ---------- 2. Pemilih mode pada simulasi ---------- */
 .mode-select{
   width:100%;padding:11px 12px;border:2px solid var(--bx-ink);border-radius:10px;
   font-family:inherit;font-size:14px;background:#fff;font-weight:bold;
 }
 
-/* ---------- 3. Label mode (lemah / kuat) ---------- */
 .mode-pill{
   display:inline-block;padding:3px 11px;border-radius:999px;border:2px solid #000;
   font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.3px;
@@ -57,7 +43,163 @@
 /* ---------- 6. Skor kuis halaman Brute Force ---------- */
 #bfScore{font-weight:900;font-size:18px;margin-top:8px}
 
-/* ---------- 7. Tampilan HP ---------- */
+.Illustrasion{
+  display: flex;justify-content: center;margin:12px 0 16px
+}
+
+.Illustrasion img{
+  width: 100%;max-width: 600px;height: 200px;object-fit: contain;border-radius: 12px;
+}
+
+.terminal-body {
+  overflow: hidden;
+}
+
+.terminal-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.terminal-input-wrap {
+  position: relative;
+  display: inline-block;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+#wwCommandPreview {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  white-space: pre;
+  pointer-events: none;
+  color: white;
+  font: inherit;
+  padding: 0;
+  border: none;
+}
+
+#wwCommand {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  background: transparent;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent;
+  caret-color: white;
+  font: inherit;
+  border: none;
+  outline: none;
+}
+
+#wwCommandPreview .keyword {
+  color: #10af13;
+  font-weight: bold;
+}
+
+#wwCommand::placeholder {
+  color: #6b7280;
+  -webkit-text-fill-color: #6b7280;
+  opacity: 1;
+}
+
+#wwCommandPreview .gb-flag {
+  color: #ff6a00;
+  font-weight: bold;
+}
+
 @media(max-width:720px){
   .pw-row{grid-template-columns:1fr}
 }
+
+#hydraHintText {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  margin-top: 0;
+  pointer-events: none;
+  transition:
+    opacity .4s ease,
+    max-height .4s ease,
+    margin-top .4s ease;
+}
+
+#hydraHintText.show {
+  opacity: 1;
+  max-height: 160px;
+  margin-top: 14px;
+  pointer-events: auto;
+}
+
+.hint-terminal {
+  padding: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #1b1d1f;
+  border: 3px solid #000;
+}
+
+.hint-terminal .bar-top {
+  margin: 0;
+}
+
+.hint-terminal .terminal-body {
+  padding: 14px;
+}
+
+  .q-slide {
+      animation: fadeIn 0.4s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateX(10px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    .opts {
+      margin-top: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .opt {
+      padding: 12px 16px;
+      border: 2px solid var(--bx-slate, #cbd5e1);
+      background: #fff;
+      border-radius: 8px;
+      cursor: pointer;
+      text-align: left;
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+    .opt:hover:not(:disabled) {
+      border-color: var(--bx-blue, #3b82f6);
+      background: #f1f5f9;
+    }
+    .opt:disabled {
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+    .opt.correct {
+      background-color: var(--bx-green, #28c840) !important;
+      color: #fff !important;
+      border-color: var(--bx-green, #28c840) !important;
+    }
+    .opt.wrong {
+      background-color: var(--bx-red, #ff5f57) !important;
+      color: #fff !important;
+      border-color: var(--bx-red, #ff5f57) !important;
+    }
+    #bfScoreResult {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--bx-blue, #3b82f6);
+      margin: 15px 0;
+    }

@@ -4,20 +4,23 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Brute Force — Akademi Keamanan Siber Bloxy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/base.css" />
 <link rel="stylesheet" href="css/lab.css" />
 <link rel="stylesheet" href="css/brute-force.css" />
 <script src="js/bruteforce.js" defer></script>
 </head>
-<body>
 
+<body>
 <header class="nav">
   <div class="nav-in">
     <div class="logo"><span class="cube"><span>🔨</span></span> Brute Force</div>
     <nav class="menu">
       <a href="#aturan">Aturan Main</a>
       <a href="#apa">Apa Itu?</a>
-      <a href="#hydra">Hydra &amp; Simulasi</a>
+      <a href="#hydra">Simulasi</a>
       <a href="#lindungi">Cara Melindungi</a>
       <a href="index.html">← Beranda</a>
     </nav>
@@ -26,7 +29,6 @@
 
 <div class="hero wrap">
   <h1>Jadi <span class="hl">Penjaga Sandi</span> yang Kuat!</h1>
-  <p class="sub">Brute force adalah cara penjahat <b>menebak sandi dengan mencoba ribuan kemungkinan</b> secepat kilat sampai ada yang cocok. Di sini kamu belajar cara kerjanya — dan cara membuat sandi yang <b>tidak bisa ditebak</b>.</p>
 </div>
 
 <div class="wrap">
@@ -47,88 +49,144 @@
 
 <section id="apa">
   <div class="sec-title"><div class="num" style="background:var(--bx-sky)">?</div><h2>Apa Itu Brute Force?</h2></div>
-  <div class="grid">
-    <div class="card block">
-      <div class="studs"><span class="stud"></span><span class="stud"></span><span class="stud"></span></div>
-      <h3>🔨 Menebak dengan cara paksa</h3>
-      <p class="desc"><b>Brute force</b> artinya “tenaga kasar”. Penjahat tidak memakai trik pintar — ia hanya <b>mencoba sandi satu per satu</b> secepat mungkin sampai ada yang cocok.</p>
-      <p class="desc">Komputer bisa mencoba <b>ribuan bahkan jutaan</b> sandi per detik. Jadi kalau sandimu pendek atau umum, ia bisa ketemu dalam sekejap.</p>
-      <p class="desc">Sering kali penjahat mulai dari <b>daftar sandi paling umum</b> (disebut <i>wordlist</i>) — karena banyak orang memakai sandi yang mudah ditebak.</p>
-      <div class="safe-tip"><b>Idenya:</b> semakin <b>panjang dan aneh</b> sandimu, semakin banyak kemungkinan yang harus dicoba — sampai butuh ratusan tahun!</div>
-    </div>
-    <div class="card block">
-      <div class="studs"><span class="stud"></span><span class="stud"></span><span class="stud"></span></div>
-      <h3>📋 Sandi umum vs sandi kuat</h3>
-      <p class="desc">Sandi yang ada di <i>wordlist</i> hampir langsung ketemu. Sandi yang panjang &amp; unik butuh waktu sangat lama.</p>
-      <div class="pw-row">
-        <div class="pw-card weak">
-          <h4>❌ Lemah</h4>
-          <code class="pw">123456</code>
-          <p class="why">Ada di urutan atas daftar umum. Ketemu dalam sekejap.</p>
-        </div>
-        <div class="pw-card strong">
-          <h4>✅ Kuat</h4>
-          <code class="pw">B10xy!Naga#77</code>
-          <p class="why">Panjang, campur huruf besar-kecil, angka, dan simbol. Hampir mustahil ditebak.</p>
-        </div>
+    <div class="learning-slider">
+    <button class="slide-arrow left" id="prevApa" aria-label="Materi sebelumnya">←</button>
+
+    <div class="learning-window">
+      <div class="card block learning-card active" data-slide="0">
+      <h3 class="sub-class">Bayangkan</h3>
+        <div class="Illustrasion"><img src="img/brute force 1.jpg" alt="Ilustrasi memeriksa rumah"></div>
+        <p class="desc">Beberapa <b>penjahat siber</b> tidak memakai trik pintar, mereka hanya mencoba sandi satu per satu secepat mungkin sampai ada yang cocok.</p>
+        <p class="desc safe-tip"><strong>"Apakah sandimu "123"? Apakah sandimu "password"? Apakah sandimu "***"?"</strong></p>
+        <p class="desc">
+          Komputer bisa mencoba <b>ribuan</b> bahkan <b>jutaan</b> sandi per detik. Kalau sandimu pendek atau umum, ia bisa ketemu dalam sekejap.
+        </p>
       </div>
-      <ul class="speed">
+
+      <div class="card block learning-card" data-slide="1">
+        <h3 class="sub-class">Alat</h3>
+        <div class="Illustrasion"><img src="img/brute force 2.jpg" alt="Ilustrasi memeriksa rumah"></div>
+        <table class="tbl">
+          <tr>
+            <th>Alat</th>
+            <th>Pertanyaan</th>
+            <th>Command</th>
+          </tr>
+          <tr>
+            <td>
+              <b style="color:#10af13">Hydra</b>
+            </td>
+            <td>
+              <b>"Apakah sandimu ini?"</b>
+              <br>
+              Username, Password
+            </td>
+            <td>
+              <div class="terminal">
+                <div class="bar-top">
+                  <span class="dot" style="background:#ff5f57"></span>
+                  <span class="dot" style="background:#ffbd2e"></span>
+                  <span class="dot" style="background:#28c840"></span>
+                </div>
+                <div class="terminal-body">
+                  <div class="terminal-line">
+                    <span class="prompt">hydra -l<span style="color:#fff"> (username)</span> -P 
+                    <p><span style="color:#fff"> (wordlist)</span> <span style="color:#fff"> (target)</span></span></p>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="card block learning-card" data-slide="2">
+        <h3 class="sub-class">Cara Kerja</h3>
+        <div class="Illustrasion"><img src="img/brute force 3.jpg" alt="Ilustrasi memeriksa rumah"></div>
+        <p class="desc">
+          <b>Penjahat siber</b> akan memasukkan daftar sandi umum terlbih dahulu, lalu mencoba sandi yang lebih panjang dan unik. Semakin panjang dan unik sandi, semakin lama waktu yang dibutuhkan untuk menebaknya.
+        </p>
+        <div class="pw-row">
+          <div class="pw-card weak">
+            <h4>❌ Lemah</h4>
+            <code class="pw">123456</code>
+            <p class="why">Ada di urutan atas daftar umum. Ketemu dalam sekejap.</p>
+          </div>
+          <div class="pw-card strong">
+            <h4>✅ Kuat</h4>
+            <code class="pw">B10xy!Naga#77</code>
+            <p class="why">Panjang, campur huruf besar-kecil, angka, dan simbol. Hampir mustahil ditebak.</p>
+          </div>
+        </div>
+        <ul class="speed">
         <li><span>“123456”</span><span class="t fast">± seketika</span></li>
         <li><span>“bloxy123”</span><span class="t fast">beberapa detik</span></li>
         <li><span>“B10xy!Naga#77”</span><span class="t slow">ratusan tahun</span></li>
       </ul>
-      <div class="safe-tip">Perkiraan di atas disederhanakan untuk belajar, tapi <b>idenya benar</b>: panjang + campuran karakter = jauh lebih aman.</div>
+      </div>
     </div>
+
+    <button class="slide-arrow right" id="nextApa" aria-label="Materi berikutnya">→</button>
+  </div>
+
+  <div class="slide-indicator">
+    <span class="slide-dot active"></span>
+    <span class="slide-dot"></span>
+    <span class="slide-dot"></span>
   </div>
 </section>
 
-<section id="hydra">
-  <div class="sec-title"><div class="num" style="background:var(--bx-orange);color:#fff">1</div><h2>Hydra — “Mesin Penebak Sandi”</h2></div>
-  <div class="grid">
-    <div class="card block">
-      <div class="studs"><span class="stud"></span><span class="stud"></span><span class="stud"></span></div>
-      <h3>🧠 Cara Kerjanya</h3>
-      <p class="desc"><b>Hydra</b> adalah program yang bisa mencoba sandi dari sebuah <i>wordlist</i> ke sebuah kotak login, <b>otomatis dan sangat cepat</b>.</p>
-      <p class="desc">Perintahnya kira-kira seperti ini:</p>
-      <table class="tbl">
-        <tr><th>Perintah Hydra (contoh)</th></tr>
-        <tr><td><code>hydra -l pemain1 -P daftar-sandi.txt login.bloxy.latihan</code></td></tr>
-      </table>
-      <p class="desc" style="margin-top:12px">
-        • <code>-l pemain1</code> → nama pengguna yang mau ditebak<br>
-        • <code>-P daftar-sandi.txt</code> → daftar sandi yang akan dicoba<br>
-        • lalu alamat target di paling akhir
-      </p>
-      <div class="safe-tip"><b>Hydra bukan alat jahat.</b> Petugas keamanan memakainya untuk <b>menguji kekuatan sandi sistem mereka sendiri</b> supaya bisa diperbaiki. Yang menentukan baik atau buruk adalah <b>izin</b> dan <b>niat</b>.</div>
-    </div>
+<section id="hydra" class="card-simulasi">
+  <div class="sec-title simulasi">
+    <h2>SIMULATION</h2>
+  </div>
 
-    <div class="card block">
-      <div class="studs"><span class="stud"></span><span class="stud"></span><span class="stud"></span></div>
-      <h3>🔨 Simulasi Hydra</h3>
-      <p class="desc">Pilih jenis akun (semuanya fiktif!), lalu jalankan Hydra dan bandingkan hasilnya:</p>
-      <div class="demo">
-        <label for="bfMode">Jenis akun target</label>
-        <select id="bfMode" class="mode-select">
-          <option value="lemah">Akun Lemah (sandi umum, tanpa pengaman)</option>
-          <option value="kuat">Akun Kuat (sandi unik + akun dikunci)</option>
-        </select>
-        <div class="row" style="margin-top:10px">
-          <button class="btn play" id="bfBtn" onclick="runHydra()">Jalankan Hydra</button>
-          <button class="btn hint small" style="background:var(--bx-slate)" onclick="bfReset()">Ulangi</button>
-        </div>
-        <div class="bar"><i id="bfFill"></i></div>
-        <div class="bar-label" id="bfLabel">Belum dijalankan.</div>
-      </div>
-      <div class="terminal" style="margin-top:12px">
+  <div class="grid">
+    <div class="card block hint">
+      <P class="desc">Kamu akan menggunakan <b>terminal</b> untuk melakukan scanning.</P>
+      <p class="desc">Coba kamu scanning web <b style="color:#10af13">TopUpDoor</b> directory <code>/admin</code> <b>username</b>: admin <br><b>password</b>: password.txt</br></p>
+      <button class="hint-btn" id="hintBtn">?</button>
+      <div class="terminal hint-terminal" id="hintText">
         <div class="bar-top">
           <span class="dot" style="background:#ff5f57"></span>
           <span class="dot" style="background:#ffbd2e"></span>
           <span class="dot" style="background:#28c840"></span>
-          <span class="ttl">terminal-latihan — hydra</span>
+          <span class="ttl">hint</span>
         </div>
-        <pre id="bfTerm"><span class="dim">Klik “Jalankan Hydra” untuk memulai simulasi...</span></pre>
+
+        <div class="terminal-body">
+          <div class="terminal-line">
+            <span class="hint-command"><span class="prompt">hydra -l</span> admin <span class="prompt">-P</span> password.txt https://topupdoor.vercel.app/admin</span>
+          </div>
+        </div>
       </div>
-      <ul class="finds" id="bfFinds"></ul>
+    </div>
+
+    <div class="input">
+      <div class="terminal">
+        <div class="bar-top">
+          <span class="dot" style="background:#ff5f57"></span>
+          <span class="dot" style="background:#ffbd2e"></span>
+          <span class="dot" style="background:#28c840"></span>
+          <span class="ttl">
+            terminal-latihan — hydra
+          </span>
+        </div>
+        <div class="terminal-body">
+          <div class="terminal-line">
+            <span class="prompt">siswa@cyber:~$</span>
+            <div class="terminal-input-wrap">
+              <div id="wwCommandPreview" aria-hidden="true"></div>
+              <input type="text" id="wwCommand" class="terminal-input"
+                autocomplete="off" spellcheck="false"
+                placeholder="ketik perintah di sini...">
+            </div>
+          </div>
+          <pre id="wwTerm">
+          </pre>
+        </div>
+      </div>
+      <ul class="finds" id="wwFinds"></ul>
     </div>
   </div>
 </section>
@@ -167,16 +225,15 @@
 <section id="kuis-bf">
   <div class="sec-title kuis"><div class="num" style="background:var(--bx-green);color:var(--bx-yellow)">★</div><h2>Kuis Penjaga Sandi</h2></div>
   <p class="sec-sub">Uji pemahamanmu tentang Brute Force.</p>
-  <div class="quiz block" id="bfQuizBox"></div>
+    <div class="quiz block" id="bfQuizBox" style="min-height: 250px;"></div>
   <p style="margin-top:22px"><a class="cta" href="index.html">← Kembali ke Beranda &amp; lanjut materi berikutnya</a></p>
 </section>
 
 </div>
 
 <footer>
-  <p><b>Akademi Keamanan Siber Bloxy</b> — media belajar untuk anak-anak.</p>
-  <p>Semua login, akun, dan target <code>.latihan</code> di halaman ini fiktif. Tidak ada server yang ditembus, tidak ada alat Hydra yang benar-benar dijalankan, dan tidak ada koneksi jaringan yang dibuat. Semua “percobaan sandi” hanya teks untuk diperlihatkan.</p>
-  <p>Website ini tidak berafiliasi dengan Roblox Corporation. Ingat aturan emas: <b>hanya berlatih di akun milikmu sendiri atau yang sudah memberi izin</b> — jadilah penjaga, bukan penjahat! 🛡️</p>
+  <p><b class="cyber">Cyber Hero</b> media belajar untuk anak-anak.</p>
+  <p>Semua login, akun, dan target website di halaman ini fiktif. Tidak ada server yang ditembus, tidak ada alat Hydra yang benar-benar dijalankan, dan tidak ada koneksi jaringan yang dibuat. Semua “percobaan sandi” hanya teks untuk diperlihatkan.</p>
 </footer>
 
 </body>
